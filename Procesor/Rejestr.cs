@@ -25,6 +25,9 @@ namespace Procesor
         public static Rejestr operator -(Rejestr a, int b) => new Rejestr(a.Name, (byte)((Convert.ToByte(a.Value, 16) - b)));
         public static Rejestr operator -(Rejestr a, Rejestr b) => new Rejestr(a.Name, (byte)(Convert.ToByte(a.Value, 16) - Convert.ToByte(b.Value, 16)));
         public static Rejestr operator ~(Rejestr a) => new Rejestr(a.Name, (byte)~((Convert.ToByte(a.Value, 16) )));
+        public static Rejestr operator &(Rejestr a, Rejestr b) => new Rejestr(a.Name, (byte)(Convert.ToByte(a.Value, 16) & Convert.ToByte(b.Value, 16)));
+        public static Rejestr operator |(Rejestr a, Rejestr b) => new Rejestr(a.Name, (byte)(Convert.ToByte(a.Value, 16) | Convert.ToByte(b.Value, 16)));
+        public static Rejestr operator ^(Rejestr a, Rejestr b) => new Rejestr(a.Name, (byte)(Convert.ToByte(a.Value, 16) ^ Convert.ToByte(b.Value, 16)));
 
         public static void MOV(Rejestr a, Rejestr b) => a.Value = b.Value;
         public static void XCHG(Rejestr a, Rejestr b)
@@ -39,8 +42,8 @@ namespace Procesor
         public static void NEG(ref Rejestr a) => a = (~a)+1;
         public static void ADD(ref Rejestr a, Rejestr b) => a += b;
         public static void SUB(ref Rejestr a, Rejestr b) => a -= b;
-        public static void AND(ref Rejestr a, Rejestr b) => a -= b;
-        public static void OR( Rejestr a, Rejestr b) => a -= b;
-        public static void XOR(ref Rejestr a, Rejestr b) => a -= b;
+        public static void AND(ref Rejestr a, Rejestr b) => a &= b;
+        public static void OR( Rejestr a, Rejestr b) => a |= b;
+        public static void XOR(ref Rejestr a, Rejestr b) => a ^= b;
     }
 }
