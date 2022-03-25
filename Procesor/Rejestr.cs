@@ -20,14 +20,14 @@ namespace Procesor
             Value = value.ToString();
         }
         public override string ToString() => $"Name: {Name}\tValue: {Value} ";
-        public static Rejestr operator +(Rejestr a, int b) => new Rejestr(a.Name, (byte)((Convert.ToByte(a.Value, 16) + b)));
-        public static Rejestr operator +(Rejestr a, Rejestr b) => new Rejestr(a.Name, (byte)(Convert.ToByte(a.Value, 16) + Convert.ToByte(b.Value, 16)));
-        public static Rejestr operator -(Rejestr a, int b) => new Rejestr(a.Name, (byte)((Convert.ToByte(a.Value, 16) - b)));
-        public static Rejestr operator -(Rejestr a, Rejestr b) => new Rejestr(a.Name, (byte)(Convert.ToByte(a.Value, 16) - Convert.ToByte(b.Value, 16)));
-        public static Rejestr operator ~(Rejestr a) => new Rejestr(a.Name, (byte)~((Convert.ToByte(a.Value, 16) )));
-        public static Rejestr operator &(Rejestr a, Rejestr b) => new Rejestr(a.Name, (byte)(Convert.ToByte(a.Value, 16) & Convert.ToByte(b.Value, 16)));
-        public static Rejestr operator |(Rejestr a, Rejestr b) => new Rejestr(a.Name, (byte)(Convert.ToByte(a.Value, 16) | Convert.ToByte(b.Value, 16)));
-        public static Rejestr operator ^(Rejestr a, Rejestr b) => new Rejestr(a.Name, (byte)(Convert.ToByte(a.Value, 16) ^ Convert.ToByte(b.Value, 16)));
+        public static Rejestr operator +(Rejestr a, int b) => new Rejestr(a.Name, a._value + b);
+        public static Rejestr operator +(Rejestr a, Rejestr b) => new Rejestr(a.Name, a._value + b._value);
+        public static Rejestr operator -(Rejestr a, int b) => new Rejestr(a.Name, a._value - b);
+        public static Rejestr operator -(Rejestr a, Rejestr b) => new Rejestr(a.Name, a._value - b._value);
+        public static Rejestr operator ~(Rejestr a) => new Rejestr(a.Name, ~(a._value));
+        public static Rejestr operator &(Rejestr a, Rejestr b) => new Rejestr(a.Name, a._value & b._value);
+        public static Rejestr operator |(Rejestr a, Rejestr b) => new Rejestr(a.Name, a._value | b._value);
+        public static Rejestr operator ^(Rejestr a, Rejestr b) => new Rejestr(a.Name, a._value ^ b._value);
 
         public static void MOV(Rejestr a, Rejestr b) => a._value = b._value;
         public static void XCHG(Rejestr a, Rejestr b)
